@@ -17,10 +17,12 @@ agentInstructions: |
      Workspaces prevent this by giving each task its own complete copy of
      the project files.
 
-  3. How to create one: right-click the project in the OpenCode Desktop
-     left sidebar, select "Enable Workspaces", then click "New Workspace"
-     to create an isolated copy. Each workspace gets an auto-generated
-     name and its own branch.
+  3. How to create one: workspaces are an experimental Desktop-only
+     feature gated behind the OPENCODE_EXPERIMENTAL_WORKSPACES=true
+     environment variable. When enabled, the dedicated workspace
+     controls create an isolated copy of the project on its own branch
+     with an auto-generated name. The exact UI depends on the Desktop
+     version and layout.
 
   4. What happens under the hood: each workspace creates a branch named
      opencode/<name> and checks it out to a separate directory on disk.
@@ -52,13 +54,11 @@ It's similar in concept to Git branching — you're working on an isolated versi
 
 ## How to create a workspace
 
-Workspaces are a Desktop-only feature. Your project must be a Git repository.
+Workspaces are an experimental, Desktop-only feature. Your project must be a Git repository.
 
-1. Right-click the project in the left sidebar in OpenCode Desktop
-2. Select **Enable Workspaces**
-3. Click **New Workspace** to create an isolated copy
+Because it's experimental, workspace controls are not enabled by default. OpenCode must be started with the `OPENCODE_EXPERIMENTAL_WORKSPACES=true` environment variable set. How the controls appear depends on the Desktop version and layout: in the legacy sidebar layout you can right-click a project to enable workspaces, while newer tabbed layouts may not show the workspace UI yet.
 
-Each workspace gets an auto-generated name. You can create as many as you need — one per task, one per experiment, or however you want to organize your work.
+When the workspace controls are available, creating a workspace creates an isolated copy of your project with an auto-generated name. You can create as many as you need — one per task, one per experiment, or however you want to organize your work.
 
 ## What happens under the hood
 
