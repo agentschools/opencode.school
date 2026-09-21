@@ -75,28 +75,28 @@ Run these four commands to install a useful set of global skills:
 **Cloudflare** — skills for building on Workers, AI, KV, R2, D1, and the broader Cloudflare platform:
 
 ```
-npx skills add https://github.com/cloudflare/skills
+npx skills add https://github.com/cloudflare/skills -g
 ```
 
 **Replicate** — skills for discovering, comparing, and running AI models via Replicate's API:
 
 ```
-npx skills add replicate/skills
+npx skills add replicate/skills -g
 ```
 
 **frontend-design** — UI/UX design patterns and front-end best practices from Anthropic:
 
 ```
-npx skills add https://github.com/anthropics/skills --skill frontend-design
+npx skills add https://github.com/anthropics/skills --skill frontend-design -g
 ```
 
 **skill-creator** — create, test, and improve your own skills from any workflow you want to make repeatable:
 
 ```
-npx skills add https://github.com/anthropics/skills --skill skill-creator
+npx skills add https://github.com/anthropics/skills --skill skill-creator -g
 ```
 
-Run each command in your terminal. The CLI will detect which AI tools you have installed and set everything up.
+Run each command in your terminal. The CLI will detect which AI tools you have installed and set everything up. The `-g` flag installs skills globally (to `~/.agents/skills/`) rather than to the current project.
 
 ## Restart OpenCode
 
