@@ -36,10 +36,20 @@ agentInstructions: |
      needed.
 
   5. Run transcription:
-       `whisper-cpp -m ggml-large-v3-q5_0.bin input.wav --output-txt`.
+       `whisper-cpp -m ggml-large-v3-q5_0.bin input.wav -l auto --output-txt`.
       On macOS the binary may be named `whisper-cli` instead. This
      produces a timestamped transcript on stdout and saves a plain text
      file. Walk through the output together.
+
+      Always pass `-l`/`--language` explicitly: it defaults to `en`, not
+      to auto-detect, so without it a non-English recording is
+      transcribed as if it were English and correct spellings are
+      silently rewritten (e.g. Spanish "Ayar" becomes "ayer") with no
+      error. Ask the student what language their audio is in and pass
+      that code (`-l es`, `-l fr`, ...), or `-l auto` to let Whisper
+      detect it (`--detect-language` prints the guess and its
+      confidence). Keep `-l` (input language) distinct from
+      `--translate` (forces English output) — mention both.
 
   6. Try a different output format: SRT subtitles (`--output-srt`) or VTT
      (`--output-vtt`). Explain what these formats are used for (video
@@ -95,5 +105,9 @@ You need audio with speech to transcribe. Pick whichever option sounds easiest:
 - Convert your audio to the 16kHz WAV format Whisper expects
 - Run transcription and get a timestamped text output
 - Export the transcript as SRT or VTT subtitles — the standard formats used for video captions
+
+One flag to check before you run it: `-l` (or `--language`) sets the language of your **input** audio, and it defaults to `en` — not auto-detect. Transcribe a Spanish recording without it and you'll get a plausible-looking transcript with the spelling rewritten as if it were English, and no error to warn you. Pass your language code (`-l es` for Spanish, `-l fr` for French) or `-l auto` to let Whisper decide, and add `--detect-language` to see what it guessed and how confident it was.
+
+Note that `-l` and `--translate` do opposite jobs: `-l` tells Whisper what language it is listening to, while `--translate` makes it output English.
 
 Whisper can also **translate** speech from other languages into English. If you have audio in another language, you can try that too.
