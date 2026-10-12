@@ -32,6 +32,10 @@ The amount of text a [model](#model) can "see" at once during a conversation. Me
 
 **Graphical User Interface.** A visual interface with windows, buttons, and menus that you interact with using a mouse and keyboard. OpenCode Desktop is a GUI. Compare with [TUI](#tui) and [CLI](#cli).
 
+## IDE
+
+**Integrated Development Environment.** A code editor with built-in tools for debugging, testing, and managing projects. Popular IDEs include VS Code, Cursor, Zed, and Windsurf. OpenCode has extensions for these editors. Compare with [text editor](#text-editor).
+
 ## Homebrew
 
 A package manager for macOS (and Linux) that lets you install software from the command line. Run `brew install <package>` to install something, `brew update` to update Homebrew itself, and `brew upgrade` to update installed packages. OpenCode Desktop can be installed with `brew install --cask opencode-desktop`. See [brew.sh](https://brew.sh/).
