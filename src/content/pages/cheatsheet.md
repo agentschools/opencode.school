@@ -116,7 +116,7 @@ Type these in your terminal, not in the OpenCode prompt. The `opencode` CLI ship
 | --- | --- |
 | `opencode run "<prompt>"` | Run a single prompt non-interactively and exit |
 | `opencode session list` | List every [session](/lessons/sessions) across all your projects |
-| `opencode export [sessionID]` | Export a session as JSON; prompts you to pick if the ID is omitted |
+| `opencode session export [sessionID]` | Export a session as JSON; prompts you to pick if the ID is omitted |
 | `opencode mcp auth [name]` | Authenticate an OAuth-enabled MCP server — see [Tools](/lessons/tools) |
 | `opencode mcp auth list` (alias `ls`) | Show OAuth status for all configured servers |
 | `opencode mcp debug <name>` | Print debug info for an MCP server connection |
