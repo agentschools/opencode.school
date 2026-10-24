@@ -26,7 +26,7 @@ agentInstructions: |
 
   After teaching and quizzing, run `opencode session list` yourself to get
   all sessions, pick one that looks interesting, run
-  `opencode export <sessionID>` on it, and give the student a brief
+  `opencode session export <sessionID>` on it, and give the student a brief
   summary of what was being worked on in that session. Then mark the
   lesson complete.
 ---
@@ -90,10 +90,10 @@ OpenCode has two CLI commands for working with session data:
 opencode session list
 ```
 
-Lists all sessions across all your projects — session IDs, project paths, and timestamps.
+Lists the top-level sessions in the current project, newest first — session IDs, titles, and timestamps.
 
 ```
-opencode export <sessionID>
+opencode session export <sessionID>
 ```
 
 Exports a single session as JSON, including the full message history and metadata.
