@@ -25,8 +25,8 @@ agentInstructions: |
      automatically), disabled (sharing turned off entirely).
 
   After teaching and quizzing, run `opencode session list` yourself to get
-  all sessions, pick one that looks interesting, run
-  `opencode export <sessionID>` on it, and give the student a brief
+  the sessions in the current project, pick one that looks interesting, run
+  `opencode session export <sessionID>` on it, and give the student a brief
   summary of what was being worked on in that session. Then mark the
   lesson complete.
 ---
@@ -84,19 +84,23 @@ Disabling sharing is a good idea for sessions that involve sensitive or propriet
 
 ## Listing and exporting sessions
 
-OpenCode has two CLI commands for working with session data:
+OpenCode has CLI commands for working with session data:
 
 ```
 opencode session list
 ```
 
-Lists all sessions across all your projects — session IDs, project paths, and timestamps.
+Lists the sessions in the current project, newest first — session ID, title, and timestamp. Add `-n` to cap how many come back (`opencode session list -n 10`), or `--format json` for machine-readable output.
 
 ```
-opencode export <sessionID>
+opencode session export <sessionID>
 ```
 
-Exports a single session as JSON, including the full message history and metadata.
+Exports a single session as JSON, including the full message history and metadata. If you omit the session ID, OpenCode prompts you to pick one. Add `--sanitize` to redact sensitive transcript and file data before you share the export.
+
+`opencode session import <file>` goes the other way, restoring a session from a JSON file or URL you exported earlier.
+
+If the `opencode` command isn't found, your CLI isn't on your PATH. OpenCode Desktop bundles one inside the app, but it doesn't add it there for you — the exercise below works without the terminal.
 
 ## Exercise: summarize your past work
 
