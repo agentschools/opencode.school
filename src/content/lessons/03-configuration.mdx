@@ -15,9 +15,11 @@ agentInstructions: |
       macOS/Linux, C:\Users\<Name>\.config\opencode\opencode.json on
       Windows.
 
-  3. What "default_agent": "plan" does: it starts every new session in
-     Plan mode, which is read-only and safe. The student can switch to
-     Build mode when they're ready to make changes.
+  3. What "default_agent": "plan" does: it sets Plan as the preferred
+     starting agent, but Desktop can still start in Build. If the agent
+     dropdown is hidden, enable Show agent in Settings > General. Select
+     Plan and check the active agent before sending a prompt. Plan is for
+     thinking before acting, not a guaranteed sandbox.
 
   4. Permission basics and the instructions URL: "*": "allow" lets most
       actions through automatically. "edit": "allow" and "webfetch":
@@ -70,6 +72,9 @@ agentInstructions: |
   Either file extension is acceptable. Config changes require restarting
   OpenCode to take effect. After verifying, instruct the student to quit
   OpenCode Desktop so the new config takes effect next time they open it.
+  Then ask them to open a new session, enable Show agent if needed, and
+  confirm the dropdown shows Plan. Reading the config alone does not
+  verify which agent Desktop is using.
 ---
 
 import AgentPrompt from '../../components/AgentPrompt.astro'
@@ -157,7 +162,7 @@ Here's what your config file will look like:
 
 We'll substitute your actual student ID when we create the file. A few things to note:
 
-- `"default_agent": "plan"` means every new session starts in [Plan mode](/glossary#agent) — a read-only agent that can read your files and discuss your project but won't make any changes. When you're ready to act, you switch to Build. We'll cover this in detail in the [Agents](/agents) lesson.
+- `"default_agent": "plan"` sets [Plan](/glossary#agent) as the preferred starting agent for thinking through a task before making changes. Desktop can still start in Build, so check the active agent rather than relying on this setting. Plan is not a guaranteed sandbox. We'll cover this in detail in the [Agents](/agents) lesson.
 - `"edit": "allow"` and `"webfetch": "allow"` are set explicitly because some providers push a remote config (via `.well-known/opencode`) that sets these tools to `"ask"`. Explicit per-tool rules override the `"*"` wildcard during config merging, so without these you may still get prompted for every file edit and web fetch even though you set `"*": "allow"`.
 - `"external_directory": "ask"` means OpenCode will pause and ask before reading or editing files outside the current project directory. This is the default behavior, but setting it explicitly makes the config self-documenting.
 - The `"bash"` block inside `"permission"` adds safety guardrails for shell commands. Most commands run automatically, but `rm` (delete files) and `rmdir` (remove directories) will pause and ask for your approval first. We'll add more permission rules in the next lesson.
@@ -169,7 +174,9 @@ Config changes take effect the next time OpenCode starts. Once the file is creat
 
 ## Verify config is working
 
-Let's ask OpenCode to check that the config file exists and is being applied correctly.
+Open a new session and check the agent dropdown below the prompt input. If it is hidden, open Settings > General and enable Show agent (scroll down if needed). Select Plan before sending a prompt. Reading the config file alone does not confirm which agent Desktop is using.
+
+Then ask OpenCode to check that the config file contains the settings above.
 
 <AgentPrompt title="Configuration" prompt={`Let's check that the "Configuration" lesson is complete.`} />
 
