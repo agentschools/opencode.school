@@ -1,10 +1,10 @@
 ---
 title: "Learn anything"
 slug: learn-anything
-description: "Install Matt Pocock's /teach skill and use OpenCode to build a bespoke curriculum for anything you want to learn."
+description: "Install Matt Pocock's teach skill and use OpenCode to build a bespoke curriculum for anything you want to learn."
 order: 11
 agentInstructions: |
-  Guide the student through installing and using the /teach skill
+  Guide the student through installing and using the teach skill
   (https://github.com/mattpocock/skills/tree/main/skills/productivity/teach),
   a user-invoked skill that turns OpenCode into a personal tutor for any
   topic, not just software or AI. Adapt depth and pace to the student's
@@ -25,13 +25,13 @@ agentInstructions: |
      just coding or AI. Let them choose their own topic instead if
      they'd rather.
 
-  3. Explain that /teach treats the current directory as a stateful
+  3. Explain that @teach treats the current directory as a stateful
      teaching workspace, so help the student create and switch into a new,
      dedicated folder for this topic (e.g. `mkdir learn-rubiks-cube && cd
      learn-rubiks-cube`) before running the skill. Do not run it inside
      the OpenCode School project or another unrelated project.
 
-  4. Run `/teach` in OpenCode from that folder. The skill will interview
+  4. Run `@teach` in OpenCode from that folder. The skill will interview
      the student about why they want to learn the topic and what they
      already know. Encourage the student to answer honestly and in their
      own words so the resulting curriculum fits them, not a generic
@@ -46,7 +46,7 @@ agentInstructions: |
   6. Encourage the student to notice the format: lessons are short,
      visual, and tied to a single tangible win, not a wall of text. If the
      lesson includes a quiz or interactive element, have the student try
-     it. Point out that they can keep running /teach in this same folder
+     it. Point out that they can keep running @teach in this same folder
      later to get the next lesson, adapted to what they've learned so
      far.
 
@@ -58,7 +58,7 @@ agentInstructions: |
 
 import AgentPrompt from '../../components/AgentPrompt.astro'
 
-You've used OpenCode to build things: websites, apps, videos, social posts. This exercise flips that around. Instead of building software, you'll use OpenCode to build yourself a personal curriculum, on absolutely anything, using [Matt Pocock](https://github.com/mattpocock)'s `/teach` skill.
+You've used OpenCode to build things: websites, apps, videos, social posts. This exercise flips that around. Instead of building software, you'll use OpenCode to build yourself a personal curriculum, on absolutely anything, using [Matt Pocock](https://github.com/mattpocock)'s `teach` skill.
 
 The skill interviews you first, just like OpenCode School does, to understand what you already know and why you want to learn it. Then it generates lessons just for you: short, visual, single-file pages with graphics, interactive elements, and quizzes, saved to a folder on your own machine. You can keep coming back to the same folder to get more lessons, each one picking up where the last left off.
 
@@ -70,7 +70,7 @@ You'll need [Node.js](https://nodejs.org) installed, since the skill installer r
 
 ## The skill
 
-[`/teach`](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) is one skill from Matt Pocock's larger [`skills`](https://github.com/mattpocock/skills) repository, a collection of agent skills for engineering and productivity. Install just the `teach` skill, scoped to OpenCode, globally:
+[`teach`](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach) is one skill from Matt Pocock's larger [`skills`](https://github.com/mattpocock/skills) repository, a collection of agent skills for engineering and productivity. Install just the `teach` skill, scoped to OpenCode, globally:
 
 ```
 npx skills add mattpocock/skills --skill teach --agent opencode -g -y
@@ -78,7 +78,7 @@ npx skills add mattpocock/skills --skill teach --agent opencode -g -y
 
 Skills load at startup, so **quit and reopen OpenCode Desktop** after installing.
 
-Unlike some skills that OpenCode reaches for automatically, `/teach` is invoked directly by you, by typing `/teach`. It treats whatever folder you run it from as a persistent teaching workspace, so start by creating a new, dedicated folder for the topic you want to learn, separate from any other project.
+Unlike some skills that OpenCode reaches for automatically, `teach` disables model invocation, so OpenCode won't load it on its own. You invoke it yourself by typing `@teach` in your prompt. It treats whatever folder you run it from as a persistent teaching workspace, so start by creating a new, dedicated folder for the topic you want to learn, separate from any other project.
 
 ## Pick something to learn
 
@@ -92,12 +92,12 @@ Or ignore all three and pick your own topic entirely. Anything you're curious ab
 
 ## What you'll do
 
-- Install the `/teach` skill globally, scoped to OpenCode, and restart OpenCode Desktop.
+- Install the `teach` skill globally, scoped to OpenCode, and restart OpenCode Desktop.
 - Create a new folder to act as your teaching workspace for this topic.
-- Run `/teach` and answer its interview about your goals and existing knowledge.
+- Run `@teach` and answer its interview about your goals and existing knowledge.
 - Review the first bespoke lesson it generates, saved as an HTML file you can open and revisit.
 - Try any quiz or interactive element the lesson includes.
 
 ## Keep going
 
-A single lesson is just the start. Run `/teach` again in the same folder whenever you want the next one, and the skill adapts to what you've already learned, building a whole personalized course over time, one lesson at a time.
+A single lesson is just the start. Run `@teach` again in the same folder whenever you want the next one, and the skill adapts to what you've already learned, building a whole personalized course over time, one lesson at a time.
