@@ -57,6 +57,8 @@ Special characters that change how a prompt is interpreted.
 | Drag and drop | Drag an image file from your desktop or file manager into the OpenCode window to attach it |
 | `Esc` | Interrupt a running response or close popovers |
 
+In Desktop, `Ctrl+.` (Windows/Linux) or `Cmd+.` (macOS) cycles [agents](/lessons/agents) when Show agent is enabled. If the dropdown is hidden, open Settings > General and enable Show agent (scroll down if needed). Check that Plan is selected before sending a prompt: Desktop can start in Build even with `"default_agent": "plan"`.
+
 ### Prompt input editing (Readline / Emacs style)
 
 Built into the OpenCode Desktop prompt input. The TUI has equivalent `input_*` bindings that can be remapped in `tui.json`.
@@ -102,7 +104,7 @@ The TUI uses `Ctrl+X` as the leader key by default — press `Ctrl+X`, release, 
 
 | Shortcut | What it does |
 | --- | --- |
-| `Tab` / `Shift+Tab` | Cycle [agents](/lessons/agents) (Plan ↔ Build) — Desktop uses the agent dropdown below the prompt instead |
+| `Shift+Tab` (2.2.6; `Tab` in older versions) | Cycle [agents](/lessons/agents) (Plan ↔ Build) in the TUI only |
 | `Ctrl+P` | Command palette |
 | `Ctrl+T` | Cycle model variants (e.g. reasoning on/off) |
 | `F2` / `Shift+F2` | Cycle through recently used models |

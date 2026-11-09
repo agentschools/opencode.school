@@ -11,26 +11,26 @@ agentInstructions: |
      configured for a particular task or workflow, distinct from the
      broader industry use of the word.
 
-  2. The Plan agent: conversational and read-only. It can read files and
-     discuss the project but won't make any changes. The student already
-     set "default_agent": "plan" in the Configuration lesson so every new
-     session starts here, but note that Plan mode is not a hard sandbox
-     and the agent may still occasionally run commands or make API calls
-     that have side effects.
+  2. The Plan agent: for reading files, discussing the project, and
+     thinking through an approach before making changes. Plan is not a
+     hard sandbox and commands or API calls may still have side effects.
 
   3. The Build agent: the implementation agent with full access to read,
      write, and run things. Switch to this when you know what you want
      to do.
 
-  4. The recommended workflow: since Plan is already the default, the
-     student is already starting safe. The key skill is knowing when to
-     switch to Build and being deliberate about it, especially for complex
-     or unfamiliar tasks.
+  4. The recommended workflow: check the active agent before sending a
+     prompt, start in Plan, then deliberately switch to Build. Desktop can
+     start in Build even with "default_agent": "plan". If the dropdown is
+     hidden, enable Show agent in Settings > General, then select Plan.
+     With the dropdown visible, Ctrl+. (Windows/Linux) or Cmd+. (macOS)
+     cycles agents in Desktop; the TUI uses Shift+Tab in OpenCode 2.2.6
+     (Tab in older versions).
 
   After teaching and quizzing, verify completion by asking the student to
-  describe when they'd use Plan vs. Build and confirm they understand that
-  Plan is read-only by default but not a guaranteed sandbox, and that
-  Build can make changes.
+  show or report which agent is selected and describe how they would
+  switch it. Confirm they know when to use Plan vs. Build, that Plan is
+  not a guaranteed sandbox, and that Build can make changes.
 ---
 
 import AgentPrompt from '../../components/AgentPrompt.astro'
@@ -43,11 +43,11 @@ OpenCode ships with two built-in agents: **Plan** and **Build**.
 
 ## The Plan agent
 
-Plan is a read-only conversational agent. It can read your files and discuss your project, but it won't make any changes. No files written, no commands run, nothing modified.
+Plan is for reading files, discussing your project, and thinking through an approach before making changes.
 
-You already set `"default_agent": "plan"` in your global config back in the [Configuration](/configuration) lesson, so every new session starts here. That's intentional — you think first, then act.
+You set `"default_agent": "plan"` in your global config in the [Configuration](/configuration) lesson. That sets your preferred starting agent, but Desktop can still start in Build. Check that Plan is selected before sending a prompt.
 
-That said, Plan mode is an instruction to the model, not a hard sandbox. Occasionally the agent may still make API calls or run commands that have side effects, so it's not a guaranteed protection against unintended changes.
+Plan's behavior depends on its instructions and configured permissions. Commands or API calls may still have side effects, so it's not a guaranteed protection against unintended changes.
 
 Use Plan when you want to:
 
@@ -64,17 +64,23 @@ Build is the implementation agent. It has full access — it can read files, wri
 
 ## How to switch
 
-**In OpenCode Desktop:** use the dropdown below the prompt input to switch between Plan and Build.
+In OpenCode Desktop:
 
-**In the TUI:** press `Tab` to alternate between Plan and Build.
+1. Look for the agent dropdown below the prompt input. If you only see the model picker, open Settings > General and enable Show agent (scroll down if needed).
+2. Return to the prompt and select Plan from the agent dropdown. Enabling Show agent makes the control visible; check the selection rather than assuming it changed.
+3. Check the active agent when starting a new session. Switch to Build when you are ready to make changes.
+
+With the dropdown visible, you can also cycle agents with `Ctrl+.` on Windows/Linux or `Cmd+.` on macOS.
+
+In the TUI: press `Shift+Tab` to cycle agents in OpenCode 2.2.6 (`Tab` in older versions). In Desktop, `Tab` moves keyboard focus instead.
 
 ## The recommended workflow
 
-Since Plan is your default, every session already starts safe. For quick, straightforward tasks you can switch straight to Build. But for anything complex or unfamiliar, staying in Plan first is a good habit. It gives you a chance to think out loud with the agent, catch problems early, and arrive at Build with a clear direction.
+Start by checking which agent is active. For quick, straightforward tasks you can switch straight to Build. For anything complex or unfamiliar, select Plan first. It gives you a chance to think out loud with the agent, catch problems early, and arrive at Build with a clear direction.
 
 A useful pattern:
 
-1. **Start in Plan.** Describe what you want to accomplish. (You're already here.)
+1. Check that Plan is selected, then describe what you want to accomplish.
 2. **Explore together.** Ask questions, consider options, refine the approach.
 3. **Switch to Build.** Tell it to implement what you planned.
 
