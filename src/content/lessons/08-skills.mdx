@@ -58,7 +58,7 @@ my-skill/
 Agents use skills in two ways:
 
 - **Automatically** — when your request matches a skill's description, the agent loads and applies it without you asking
-- **Manually** — you can invoke a skill by name yourself, e.g. *"Use the replicate skill to find a good image generation model"*
+- **Manually** — you can invoke a skill by name yourself, e.g. *"Use the frontend-design skill to design a landing page"*
 
 Skills use progressive disclosure to stay efficient: at startup, OpenCode only loads the `name` and `description` of each skill — just enough to know when to use it. The full instructions are loaded on demand.
 
@@ -68,20 +68,14 @@ The best way to install skills is with the [`skills` CLI](https://www.npmjs.com/
 
 You'll need [Node.js](https://nodejs.org) installed to run `npx skills`. If you don't have it, ask OpenCode to help you install it for your operating system.
 
-## Install four skills
+## Install three skills
 
-Run these four commands to install a useful set of global skills:
+Run these three commands to install a useful set of global skills:
 
 **Cloudflare** — skills for building on Workers, AI, KV, R2, D1, and the broader Cloudflare platform:
 
 ```
 npx skills add https://github.com/cloudflare/skills
-```
-
-**Replicate** — skills for discovering, comparing, and running AI models via Replicate's API:
-
-```
-npx skills add replicate/skills
 ```
 
 **frontend-design** — UI/UX design patterns and front-end best practices from Anthropic:
