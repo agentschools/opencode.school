@@ -23,6 +23,12 @@ agentInstructions: |
      `export REPLICATE_API_TOKEN=r8_...`. They will need to restart
      OpenCode after adding the token for it to take effect.
 
+     Note: a valid token does not mean a funded account. If a model returns
+     402 Insufficient credit, use models from Replicate's Try for Free
+     collection (https://replicate.com/collections/try-for-free) instead —
+     e.g. black-forest-labs/flux-dev for images and minimax/video-01 for
+     video. These satisfy the same completion criteria at $0.00.
+
   2. Generate images with google/nano-banana-2. Start with a
      text-to-image prompt: ask the student what they want to create and
      help them write a descriptive prompt. Run the model and show the
@@ -74,6 +80,12 @@ export REPLICATE_API_TOKEN=r8_your_token_here
 ```
 
 Restart OpenCode after adding the token so it picks up the new environment variable.
+
+## Cost
+
+A valid token only proves authentication — it does not mean your Replicate account has credit. The paid models above cost roughly $0.50 for the full exercise, and the first call with an unfunded account fails with `402 Insufficient credit`.
+
+If you'd rather spend nothing, use Replicate's [Try for Free collection](https://replicate.com/collections/try-for-free) instead. Models there (for example `black-forest-labs/flux-dev` for images and `minimax/video-01` for video) run with no credit and no card, and still satisfy this exercise's completion criteria: save at least one generated image and one generated video locally. Free runs are limited, so save outputs promptly.
 
 ## What you'll do
 
